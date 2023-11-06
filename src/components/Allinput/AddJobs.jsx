@@ -1,7 +1,6 @@
 
 
-
-const DefaultHome = () => {
+const AddJobs = () => {
     return (
         <div>
             
@@ -9,4 +8,4 @@ const DefaultHome = () => {
     );
 };
 
-export default DefaultHome;
+export default AddJobs;
