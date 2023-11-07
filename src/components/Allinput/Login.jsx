@@ -1,17 +1,23 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 import loginLogo from '../../assets/login.svg'
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Login = () => {
+    const {userSignInGoogle} = useContext(AuthContext)
 
 
     const handleLoginField = (e) => {
         e.preventDefault();
+        // const form = new FormData(e.currentTarget);
     }
 
     const handleGoogleLogin = () => {
-
+        userSignInGoogle()
+        .then()
+        .catch()
     }
 
     return (
