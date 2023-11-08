@@ -5,6 +5,7 @@ import DefaultHome from "../Pages/DefaultHome";
 import Login from "../Allinput/Login";
 import Register from "../Allinput/Register";
 import AddJobs from "../Allinput/AddJobs";
+import AllJobs from "../Pages/AllJobs";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
             {
                 path:'/add-job',
                 element:<AddJobs></AddJobs>
+            },
+            {
+                path:'/all-jobs',
+                element:<AllJobs></AllJobs>,
+                loader:()=>fetch('http://localhost:5000/api/v1/get-jobs')
             }
 
         ]

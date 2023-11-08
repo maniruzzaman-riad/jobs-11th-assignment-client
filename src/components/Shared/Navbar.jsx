@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { RiLogoutCircleRLine } from 'react-icons/ri';
 
 
 const Navbar = () => {
-    const {user} = useContext(AuthContext)
+    const { user, userLogout } = useContext(AuthContext)
 
     const allNavLink = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -13,6 +14,12 @@ const Navbar = () => {
         <li><NavLink to="/add-job"> Add A Job</NavLink></li>
         <li><NavLink to="/my-jobs"> My Jobs</NavLink></li>
     </>
+
+    const handleLogout = () => {
+        userLogout()
+        .then()
+        .catch()
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -33,8 +40,10 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {user && <><h2 className="mr-4 text-2xl font-semibold">{user.displayName}</h2></>}
-                    <Link to='/login'><button className="btn">Login</button></Link>
+                    {user && <><h2 className="mr-4 text-2xl font-semibold">{user.displayName}</h2>
+                    <img className="w-16 rounded-full mr-4" src={user.photoURL} alt="" />
+                     <RiLogoutCircleRLine className="mr-3 text-3xl" onClick={handleLogout}></RiLogoutCircleRLine> </>}
+                    {!user && <Link to='/login'><button className="btn">Login</button></Link>}
                 </div>
             </div>
         </div>

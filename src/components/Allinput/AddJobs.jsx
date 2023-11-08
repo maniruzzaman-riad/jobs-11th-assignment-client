@@ -6,6 +6,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const AddJobs = () => {
     const { user } = useContext(AuthContext)
+    // console.log(user);
 
     const [dedlineDate, setDedlineDate] = useState(new Date())
     const currentDate = new Date()
@@ -26,8 +27,9 @@ const AddJobs = () => {
         const bannerImg = form.get('image')
         const description = form.get('description')
         const userName = user.displayName;
+        const userEmail = user.email;
 
-        const newPostedJob = { jobTitle, jobCategory, userName, currentDate, dedlineDate, salary, bannerImg, description }
+        const newPostedJob = { jobTitle, jobCategory, userName, userEmail, currentDate, dedlineDate, salary, bannerImg, description }
         console.log(newPostedJob);
 
         fetch('http://localhost:5000/api/v1/post-job', {
